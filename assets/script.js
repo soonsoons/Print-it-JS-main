@@ -20,23 +20,18 @@ const slides = [
 const left = document.querySelector('.arrow_left'); // Sélectionne l'élément HTML avec la classe 'arrow_left' et l'assigne à la variable 'left'
 const right = document.querySelector('.arrow_right'); // Sélectionne l'élément HTML avec la classe 'arrow_right' et l'assigne à la variable 'right'
 
-let currentSlideIndex = 0;
+let index = 0; // Initialise la variable 'index' à 0
 
 left.addEventListener('click', () => {
-	currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
-	updateSlide();
+	console.log("Clique de la flèche gauche");
+	index = (index - 1);
+	updateSlide(index, 'left');
 });
 
 right.addEventListener('click', () => {
-	currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-	updateSlide();
+	console.log("Clique de la flèche droite");
+	index = (index + 1);
+	updateSlide(index, 'right');
 });
 
-function updateSlide() {
-	const slide = slides[currentSlideIndex];
-	const imageElement = document.querySelector('.slide_image');
-	const tagLineElement = document.querySelector('.slide_tagline');
 
-	imageElement.src = slide.image;
-	tagLineElement.innerHTML = slide.tagLine;
-}
